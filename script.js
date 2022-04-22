@@ -14,7 +14,6 @@
 const s = (el)=>document.querySelector(el);
 const sall = (el)=>document.querySelectorAll(el);
 
-    
 pizzaJson.map((item, index)=>{
 
     //clonando todo o conteúdo que possuimos de modelo, para prencher posteriormente
