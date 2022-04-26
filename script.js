@@ -20,11 +20,6 @@ pizzaJson.map((item, index)=>{
 
     let pizzaItem = s('.models .pizza-item').cloneNode(true);
     pizzaItem.setAttribute('data-key', index);
-    /*
-    preencher as informações em pizza item
-    utilizar o "append" pois ele adiciona o item
-    o innerHTML neste caso iria substituir os itens, e não seria o que a gente gostaria no momento
-    pois teremos mais de uma pizza no catálogo*/
 
     pizzaItem.querySelector('.pizza-item--img img').src = item.img;
     pizzaItem.querySelector('.pizza-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`;
@@ -56,6 +51,10 @@ pizzaJson.map((item, index)=>{
         
 
     })
-        
+        /*
+    preencher as informações em pizza item
+    utilizar o "append" pois ele adiciona o item
+    o innerHTML neste caso iria substituir os itens, e não seria o que a gente gostaria no momento
+    pois teremos mais de uma pizza no catálogo*/
     s('.pizza-area').append(pizzaItem);
 })
