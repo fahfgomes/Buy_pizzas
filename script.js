@@ -47,14 +47,7 @@ pizzaJson.map((item, index)=>{
             size.querySelector('span').innerHTML = pizzaJson[key].sizes[sizeIndex];
         });
         s('.pizzaInfo--qt').innerHTML = modalQt;
-
         
-
-        /*
-        pizzaItem.querySelector('.pizzaInfo--qtmais').addEventListener('click', ()=>{
-           return modalQt++;
-        });
-        */
 
         /*
         Após clicar na pizza retiramos o evento padrão dele com - e.preventDefault();
@@ -88,4 +81,22 @@ function closeModal() {
 
 sall('.pizzaInfo--cancelMobileButton, .pizzaInfo--cancelButton').forEach((item)=>{
     item.addEventListener('click', closeModal);
-})
+});
+
+s('.pizzaInfo--qtmenos').addEventListener('click', ()=>{
+    if (modalQt > 1) {
+        modalQt--;
+        s('.pizzaInfo--qt').innerHTML = modalQt;
+    }
+});
+
+s('.pizzaInfo--qtmais').addEventListener('click', ()=>{
+    modalQt++;
+    s('.pizzaInfo--qt').innerHTML = modalQt;
+});
+sall('.pizzaInfo--size').forEach((size, sizeIndex)=>{
+   size.addEventListener('click', (e)=>{
+    s('.pizzaInfo--size.selected').classList.remove('selected');
+    size.classList.add('selected');
+   })
+});
