@@ -85,3 +85,7 @@ function closeModal() {
         s('.pizzaWindowArea').style.display = 'none';
     }, 250);       
 }
+
+sall('.pizzaInfo--cancelMobileButton, .pizzaInfo--cancelButton').forEach((item)=>{
+    item.addEventListener('click', closeModal);
+})
