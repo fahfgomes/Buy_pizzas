@@ -12,6 +12,8 @@
         e retornamos o o documento html relacionado ao dado que foi fornecido
 */
 let modalQt=1;
+let cart = [];
+let modalKey = 0;
 
 
 const s = (el)=>document.querySelector(el);
@@ -35,10 +37,11 @@ pizzaJson.map((item, index)=>{
         e.preventDefault();
         modalQt = 1;
         let key = e.target.closest('.pizza-item').getAttribute('data-key');
+        modalKey = key;
         s('.pizzaBig img').src = pizzaJson[key].img;
         s('.pizzaInfo h1').innerHTML = pizzaJson[key].name;
         s('.pizzaInfo--desc').innerHTML = pizzaJson[key].description;
-        s('.pizzaInfo--actualPrice').innerHTML = `R$ ${pizzaJson[key].price.toFixed(2)}`;
+        s('.pizzaInfo--actualPrice').innerHTML = `R$ ${pizzaJson[key].price.toFixed(2)* modalQt}`;
         s('.pizzaInfo--size.selected').classList.remove('selected');
         sall('.pizzaInfo--size').forEach((size, sizeIndex)=>{
             if (sizeIndex == 2) {
@@ -94,9 +97,29 @@ s('.pizzaInfo--qtmais').addEventListener('click', ()=>{
     modalQt++;
     s('.pizzaInfo--qt').innerHTML = modalQt;
 });
+
 sall('.pizzaInfo--size').forEach((size, sizeIndex)=>{
    size.addEventListener('click', (e)=>{
     s('.pizzaInfo--size.selected').classList.remove('selected');
     size.classList.add('selected');
    })
+});
+
+s('.pizzaInfo--addButton').addEventListener('click', ()=>{
+    let size =parseInt(s('.pizzaInfo--size.selected').getAttribute(data-key));
+
+    let identifier = pizzaJson[modalKey].id+'@'+size;
+
+    let key = cart.findIndex((item)=>item.identifier == identifier);
+    if(key > -1){
+        cart[key].qt += modalQt;
+    }else{
+        cart.push({
+            identifier,
+            id:pizzaJson[modalKey].id,
+            size,
+            qt: modalQt
+    });
+    }
+    closeModal();    
 });
