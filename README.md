@@ -7,3 +7,12 @@ Projeto totalmente desenvolvido de forma acadêmica
 
     Autor do script.js - Fabricio Freitas - github: fahfgomes
     Autor dos demais arquivos: B7WEB
+
+
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [JavaScript]
+- [CSS]
+- [HTML]
